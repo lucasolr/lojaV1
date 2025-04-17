@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Ração - Tudo para seu Pet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'pet-orange': '#FF7F00',
+                        'pet-yellow': '#FFD700',
+                        'pet-orange-light': '#FFA54F',
+                        'pet-yellow-light': '#FFEC8B'
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body class="bg-gradient-to-br from-pet-yellow-light to-white min-h-screen flex flex-col">
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-pet-orange to-pet-yellow shadow-md sticky top-0 z-40">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="/images/logo.png" alt="Marvila Costa Rações" class="h-12 mr-2">
+            </div>
+            <nav class="hidden md:flex space-x-6">
+                <a href="#inicio" class="text-white hover:text-pet-yellow-light transition duration-300">Início</a>
+                <a href="#sobre" class="text-white hover:text-pet-yellow-light transition duration-300">Sobre Nós</a>
+                <a href="#produtos" class="text-white hover:text-pet-yellow-light transition duration-300">Produtos</a>
+                <a href="#contato" class="text-white hover:text-pet-yellow-light transition duration-300">Contato</a>
+            </nav>
+            <div class="relative" id="cart-icon-container">
+                <button id="cart-button" class="text-white flex items-center hover:text-pet-yellow-light transition duration-300">
+                    <i class="fas fa-shopping-cart text-xl"></i>
+                    <span id="cart-count" class="ml-2 bg-white text-pet-orange rounded-full h-6 w-6 flex items-center justify-center text-sm font-bold">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow">
+        <!-- Hero Section / Apresentação -->
+        <section id="inicio" class="bg-gradient-to-r from-pet-orange to-pet-yellow py-20 text-white">
+            <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-4 leading-tight">Cuide do seu pet com os melhores produtos</h2>
+                    <p class="text-xl mb-8">Alimentação de qualidade e produtos selecionados para seu melhor amigo.</p>
+                    <a href="#produtos" class="bg-white text-pet-orange px-6 py-3 rounded-full font-bold hover:bg-pet-yellow-light hover:text-pet-orange transition duration-300 inline-block">Ver Produtos</a>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <img src="images/Front_site.jpeg" alt="Pets felizes" class="rounded-lg shadow-2xl max-w-full h-auto transform hover:scale-105 transition duration-500">
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section / Sobre -->
+        <section id="sobre" class="py-16 bg-white">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-pet-orange mb-2">Sobre a Pet Ração</h2>
+                    <div class="w-24 h-1 bg-pet-yellow mx-auto mb-6"></div>
+                    <p class="text-gray-600 max-w-2xl mx-auto">Conheça nossa história e compromisso com a saúde e bem-estar dos pets.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-pet-yellow-light rounded-lg p-6 shadow-md transform hover:scale-105 transition duration-300">
+                        <div class="text-pet-orange text-4xl mb-4">
+                            <i class="fas fa-history"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-pet-orange">Nossa História</h3>
+                        <p class="text-gray-700">Fundada em 2015, a Pet Ração nasceu da paixão por animais e do desejo de oferecer produtos de alta qualidade para pets de todas as espécies.</p>
+                    </div>
+                    
+                    <div class="bg-pet-yellow-light rounded-lg p-6 shadow-md transform hover:scale-105 transition duration-300">
+                        <div class="text-pet-orange text-4xl mb-4">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-pet-orange">Nossa Missão</h3>
+                        <p class="text-gray-700">Proporcionar saúde e bem-estar para os animais de estimação através de produtos de qualidade e atendimento personalizado.</p>
+                    </div>
+                    
+                    <div class="bg-pet-yellow-light rounded-lg p-6 shadow-md transform hover:scale-105 transition duration-300">
+                        <div class="text-pet-orange text-4xl mb-4">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-pet-orange">Nossos Valores</h3>
+                        <p class="text-gray-700">Comprometimento com a qualidade, ética no relacionamento com clientes e fornecedores, e amor pelos animais.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Products Section -->
+        <section id="produtos" class="py-16 bg-gray-50">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h3 class="text-3xl font-bold text-pet-orange mb-2">Nossos Produtos</h3>
+                    <div class="w-24 h-1 bg-pet-yellow mx-auto mb-6"></div>
+                    <p class="text-gray-600 max-w-2xl mx-auto">Oferecemos uma seleção premium de alimentos e suplementos para o seu pet.</p>
+                </div>
+                
+                <!-- Categorias / Filtros -->
+                <div class="flex flex-wrap justify-center mb-8 gap-2">
+                    <!-- Categorias serão carregadas dinamicamente via JavaScript -->
+                    <div class="animate-pulse bg-gray-200 rounded-full h-10 w-20 mb-2"></div>
+                    <div class="animate-pulse bg-gray-200 rounded-full h-10 w-28 mb-2"></div>
+                    <div class="animate-pulse bg-gray-200 rounded-full h-10 w-24 mb-2"></div>
+                </div>
+                
+                <div id="products-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                    <!-- Products will be loaded here dynamically -->
+                    <div class="animate-pulse bg-gray-200 rounded-lg p-4 h-80"></div>
+                    <div class="animate-pulse bg-gray-200 rounded-lg p-4 h-80"></div>
+                    <div class="animate-pulse bg-gray-200 rounded-lg p-4 h-80"></div>
+                    <div class="animate-pulse bg-gray-200 rounded-lg p-4 h-80"></div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Contact Section -->
+        <section id="contato" class="py-16 bg-white">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h3 class="text-3xl font-bold text-pet-orange mb-2">Entre em Contato</h3>
+                    <div class="w-24 h-1 bg-pet-yellow mx-auto mb-6"></div>
+                    <p class="text-gray-600 max-w-2xl mx-auto">Estamos sempre disponíveis para atender você e seu pet.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <div class="bg-pet-yellow-light p-8 rounded-lg shadow-lg">
+                        <h4 class="text-xl font-bold text-pet-orange mb-4">Informações de Contato</h4>
+                        <div class="mb-4 flex items-center">
+                            <i class="fas fa-map-marker-alt mr-3 text-pet-orange text-xl"></i>
+                            <p>Av. dos Pets, 123, Centro</p>
+                        </div>
+                        <div class="mb-4 flex items-center">
+                            <i class="fas fa-phone mr-3 text-pet-orange text-xl"></i>
+                            <p>(28) 99948-4963</p>
+                        </div>
+                        <div class="mb-4 flex items-center">
+                            <i class="fas fa-envelope mr-3 text-pet-orange text-xl"></i>
+                            <p>contato@petracao.com.br</p>
+                        </div>
+                        <div class="mt-6 flex space-x-4">
+                            <a href="#" class="bg-pet-orange text-white p-2 rounded-full hover:bg-pet-yellow transition duration-300">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="bg-pet-orange text-white p-2 rounded-full hover:bg-pet-yellow transition duration-300">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="bg-pet-orange text-white p-2 rounded-full hover:bg-pet-yellow transition duration-300">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h4 class="text-xl font-bold text-pet-orange mb-4">Horário de Funcionamento</h4>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="p-4 bg-gray-50 rounded-lg border-l-4 border-pet-yellow">
+                                <h5 class="font-bold">Segunda à Sexta</h5>
+                                <p>9h às 18h</p>
+                            </div>
+                            <div class="p-4 bg-gray-50 rounded-lg border-l-4 border-pet-yellow">
+                                <h5 class="font-bold">Sábado</h5>
+                                <p>9h às 14h</p>
+                            </div>
+                            <div class="p-4 bg-gray-50 rounded-lg border-l-4 border-pet-yellow">
+                                <h5 class="font-bold">Domingo</h5>
+                                <p>Fechado</p>
+                            </div>
+                            <div class="p-4 bg-gray-50 rounded-lg border-l-4 border-pet-yellow">
+                                <h5 class="font-bold">Feriados</h5>
+                                <p>Verificar horário especial</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Cart Modal -->
+    <div id="cart-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden">
+        <div class="bg-white rounded-lg shadow-lg w-full max-w-lg mx-4 overflow-hidden">
+            <div class="bg-gradient-to-r from-pet-orange to-pet-yellow text-white py-3 px-4 flex justify-between items-center">
+                <h3 class="text-xl font-bold">Seu Carrinho</h3>
+                <button id="close-cart" class="text-white hover:text-gray-200">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div id="cart-items" class="py-4 px-4 max-h-96 overflow-y-auto">
+                <!-- Cart items will be loaded here dynamically -->
+                <p id="empty-cart-message" class="text-center text-gray-500 py-8">Seu carrinho está vazio</p>
+            </div>
+            <div class="border-t border-gray-200 py-4 px-4">
+                <div class="flex justify-between font-bold text-lg mb-4">
+                    <span>Total:</span>
+                    <span id="cart-total">R$ 0,00</span>
+                </div>
+                <button id="checkout-button" class="w-full bg-pet-orange hover:bg-pet-yellow text-white font-bold py-2 px-4 rounded transition duration-200 disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+                    Finalizar Pedido
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-r from-pet-orange to-pet-yellow text-white py-6">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h4 class="text-xl font-bold mb-4">Pet Ração</h4>
+                    <p class="mb-2">Tudo para seu melhor amigo</p>
+                    <div class="flex mt-4">
+                        <a href="#" class="mr-4 text-white hover:text-pet-yellow-light"><i class="fab fa-facebook text-xl"></i></a>
+                        <a href="#" class="mr-4 text-white hover:text-pet-yellow-light"><i class="fab fa-instagram text-xl"></i></a>
+                        <a href="#" class="text-white hover:text-pet-yellow-light"><i class="fab fa-whatsapp text-xl"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-xl font-bold mb-4">Links Rápidos</h4>
+                    <ul>
+                        <li class="mb-2"><a href="#inicio" class="text-white hover:text-pet-yellow-light transition duration-300">Início</a></li>
+                        <li class="mb-2"><a href="#sobre" class="text-white hover:text-pet-yellow-light transition duration-300">Sobre Nós</a></li>
+                        <li class="mb-2"><a href="#produtos" class="text-white hover:text-pet-yellow-light transition duration-300">Produtos</a></li>
+                        <li><a href="#contato" class="text-white hover:text-pet-yellow-light transition duration-300">Contato</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xl font-bold mb-4">Newsletter</h4>
+                    <p class="mb-4">Receba novidades e promoções</p>
+                    <div class="flex">
+                        <input type="email" placeholder="Seu e-mail" class="px-4 py-2 rounded-l w-full focus:outline-none text-gray-700">
+                        <button class="bg-white text-pet-orange px-4 py-2 rounded-r font-bold hover:bg-pet-yellow-light transition duration-300">Enviar</button>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 pt-6 border-t border-white/30 text-center">
+                <p>&copy; 2025 Pet Ração - Todos os direitos reservados</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/js/main.js"></script>
+</body>
+</html> 

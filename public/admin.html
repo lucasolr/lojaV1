@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Administrativo - Pet Store</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+    <!-- Mobile Header - Visível apenas em dispositivos móveis -->
+    <div class="mobile-header d-md-none">
+        <div>
+            <button class="btn mobile-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar">
+                <i class="bi bi-list text-white"></i>
+            </button>
+            <span class="text-white ms-2">Pet Store Admin</span>
+        </div>
+        <div>
+            <a href="/api/logout" class="btn btn-sm btn-outline-light">
+                <i class="bi bi-box-arrow-right"></i> Sair
+            </a>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-dark sidebar collapse">
+                <div class="position-sticky pt-3">
+                    <div class="text-center mb-4 d-none d-md-block">
+                        <h4 class="text-white">Pet Store Admin</h4>
+                    </div>
+                    
+                    <!-- User Info -->
+                    <div class="user-info">
+                        <i class="bi bi-person-circle"></i>
+                        <div>
+                            <div id="user-name">Administrador</div>
+                            <small>
+                                <a href="/api/logout" class="text-white-50">
+                                    <i class="bi bi-box-arrow-right"></i> Sair
+                                </a>
+                            </small>
+                        </div>
+                    </div>
+                    
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#" data-section="dashboard">
+                                <i class="bi bi-speedometer2"></i> Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-section="produtos">
+                                <i class="bi bi-box-seam"></i> Produtos
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-section="categorias">
+                                <i class="bi bi-tags"></i> Categorias
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/" target="_blank">
+                                <i class="bi bi-shop"></i> Visualizar Loja
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- Main content -->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <!-- Dashboard Section -->
+                <section id="dashboard" class="section-content active">
+                    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                        <h1 class="h2">Dashboard</h1>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 col-md-4 mb-4">
+                            <div class="card bg-primary text-white">
+                                <div class="card-body">
+                                    <h5 class="card-title">Total de Produtos</h5>
+                                    <p class="card-text h2" id="total-produtos">0</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-4 mb-4">
+                            <div class="card bg-success text-white">
+                                <div class="card-body">
+                                    <h5 class="card-title">Total de Categorias</h5>
+                                    <p class="card-text h2" id="total-categorias">0</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-4 mb-4">
+                            <div class="card bg-info text-white">
+                                <div class="card-body">
+                                    <h5 class="card-title">Produtos em Promoção</h5>
+                                    <p class="card-text h2" id="produtos-promocao">0</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Produtos Section -->
+                <section id="produtos" class="section-content">
+                    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                        <h1 class="h2">Gerenciamento de Produtos</h1>
+                        <button class="btn btn-primary" id="add-produto-btn">
+                            <i class="bi bi-plus-circle"></i> Novo Produto
+                        </button>
+                    </div>
+                    
+                    <div class="table-responsive">
+                        <table class="table table-striped table-sm">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Imagem</th>
+                                    <th>Nome</th>
+                                    <th>Preço</th>
+                                    <th>Categorias</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody id="produtos-table">
+                                <!-- Produtos serão inseridos aqui via JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Categorias Section -->
+                <section id="categorias" class="section-content">
+                    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                        <h1 class="h2">Gerenciamento de Categorias</h1>
+                        <button class="btn btn-primary" id="add-categoria-btn" data-bs-toggle="modal" data-bs-target="#categoriaModal">
+                            <i class="bi bi-plus-circle"></i> Nova Categoria
+                        </button>
+                    </div>
+                    
+                    <div class="row mb-4">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5>Categorias Existentes</h5>
+                                </div>
+                                <div class="card-body">
+                                    <ul class="list-group" id="categorias-list">
+                                        <!-- Categorias serão inseridas aqui via JavaScript -->
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <!-- Modal para adicionar/editar produto -->
+    <div class="modal fade" id="produtoModal" tabindex="-1" aria-labelledby="produtoModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="produtoModalLabel">Adicionar Produto</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="produto-form">
+                        <input type="hidden" id="produto-id">
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="produto-nome" class="form-label">Nome do Produto*</label>
+                                <input type="text" class="form-control" id="produto-nome" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="produto-preco" class="form-label">Preço*</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">R$</span>
+                                    <input type="number" class="form-control" id="produto-preco" step="0.01" min="0" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="produto-descricao" class="form-label">Descrição</label>
+                            <textarea class="form-control" id="produto-descricao" rows="3"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="produto-imagem" class="form-label">URL da Imagem</label>
+                            <input type="text" class="form-control" id="produto-imagem">
+                            <small class="form-text text-muted">Exemplo: https://placehold.co/300x300/FF7F00/FFFFFF/png?text=Nome+Produto</small>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Categorias</label>
+                            <div id="produto-categorias-container" class="border p-3 rounded">
+                                <!-- Checkboxes das categorias serão inseridos aqui via JavaScript -->
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-primary">Salvar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para adicionar categoria -->
+    <div class="modal fade" id="categoriaModal" tabindex="-1" aria-labelledby="categoriaModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="categoriaModalLabel">Nova Categoria</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="categoria-form">
+                        <div class="mb-3">
+                            <label for="categoria-nome" class="form-label">Nome da Categoria</label>
+                            <input type="text" class="form-control" id="categoria-nome" required>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-primary">Salvar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Verificar se o usuário está autenticado
+        fetch('/api/check-auth')
+            .then(response => {
+                if (!response.ok) {
+                    window.location.href = '/login';
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.username) {
+                    document.getElementById('user-name').textContent = data.nome || data.username;
+                }
+            })
+            .catch(error => {
+                console.error('Erro:', error);
+                window.location.href = '/login';
+            });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html> 

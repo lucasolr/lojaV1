@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Pet Store Admin</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <style>
+        body {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            background-color: #f8f9fa;
+        }
+        .form-signin {
+            max-width: 400px;
+            padding: 15px;
+            margin: auto;
+        }
+        .form-signin .form-floating:focus-within {
+            z-index: 2;
+        }
+        .form-signin input[type="text"] {
+            margin-bottom: -1px;
+            border-bottom-right-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+        .form-signin input[type="password"] {
+            margin-bottom: 10px;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+        }
+        .logo-image {
+            height: 100px;
+            margin-bottom: 20px;
+        }
+        .card {
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .alert {
+            display: none;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <main class="form-signin w-100">
+        <div class="card">
+            <div class="card-body p-4 p-md-5">
+                <div class="text-center mb-4">
+                    <i class="bi bi-shield-lock text-primary" style="font-size: 3rem;"></i>
+                    <h1 class="h3 mb-3 fw-normal">Pet Store Admin</h1>
+                </div>
+                
+                <form id="login-form">
+                    <div class="alert alert-danger" id="error-message" role="alert"></div>
+                    
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="username" placeholder="Nome de usuário" required>
+                        <label for="username">Nome de usuário</label>
+                    </div>
+                    
+                    <div class="form-floating mb-3">
+                        <input type="password" class="form-control" id="password" placeholder="Senha" required>
+                        <label for="password">Senha</label>
+                    </div>
+                    
+                    <button class="w-100 btn btn-lg btn-primary" type="submit">
+                        Entrar <i class="bi bi-box-arrow-in-right"></i>
+                    </button>
+                    
+                    <div class="text-center mt-4">
+                        <a href="/" class="text-decoration-none">
+                            <i class="bi bi-arrow-left"></i> Voltar para a loja
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.getElementById('login-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            fetch('/api/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ username, password })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    window.location.href = '/admin';
+                } else {
+                    const errorMsg = document.getElementById('error-message');
+                    errorMsg.textContent = data.error || 'Credenciais inválidas';
+                    errorMsg.style.display = 'block';
+                }
+            })
+            .catch(error => {
+                console.error('Erro:', error);
+                const errorMsg = document.getElementById('error-message');
+                errorMsg.textContent = 'Erro ao tentar fazer login. Tente novamente.';
+                errorMsg.style.display = 'block';
+            });
+        });
+    </script>
+</body>
+</html> 
